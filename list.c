@@ -35,12 +35,13 @@ List * createList() {
   list->tail = NULL;
   list->current = NULL;
   
-  
-     return list;
+    return list;
 }
 
 void * firstList(List * list) {
-    return NULL;
+    
+    list->current = list->head;
+    return list->head->data;
 }
 
 void * nextList(List * list) {
