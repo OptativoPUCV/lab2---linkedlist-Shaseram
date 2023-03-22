@@ -139,29 +139,33 @@ void * popBack(List * list) {
 void * popCurrent(List * list) {
   void * aux;
 
+  if (list->current == NULL)
+  {
+    return NULL;
+  }
+    
   if (list->head == list->current)
   {
     aux = list->current->data;
     list->head = list->current->next;
     list->current->prev = NULL;
-    return aux;
+    
   } else {
     
     if (list->tail == list->current)
     {
       aux = list->current->data;
       list->tail = list->current->prev;
-      return aux;
+      
     } else {
       aux = list->current->data;
       list->current->prev->next = list->current->next;
       list->current->next->prev = list->current->prev;
       list->current = list->current->next;
-      return aux;
+      
     }
   } 
-
-    return NULL;
+  return aux;
 }
 
 void cleanList(List * list) {
